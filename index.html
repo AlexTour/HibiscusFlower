@@ -1,40 +1,68 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <title>&lt;model-viewer&gt; template</title>
-    <meta charset="utf-8">
-    <meta name="description" content="&lt;model-viewer&gt; template">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link type="text/css" href="./styles.css" rel="stylesheet"/>
-  </head>
-  <body>
-    <!-- <model-viewer> HTML element -->
-    <model-viewer src="textured_mesh.glb" ar ar-modes="webxr scene-viewer quick-look" camera-controls tone-mapping="neutral" poster="poster.webp" shadow-intensity="1">
-      <div class="progress-bar hide" slot="progress-bar">
+<head>
+  <title>Hibiscus for Sudan – Awareness Movement</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Hibiscus for Sudan – Awareness for the Civil War">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link type="text/css" href="./styles.css" rel="stylesheet"/>
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+</head>
+
+<body>
+  <header class="hero">
+    <h1>Hibiscus for Sudan</h1>
+    <p class="subtitle">
+      Honoring the Hibiscus <i>(Hibiscus rosa-sinensis)</i>, a symbol of resilience in Sudan.  
+      Join the movement to support civilians affected by the ongoing conflict.
+    </p>
+  </header>
+
+  <main>
+    <section class="model-section">
+      <model-viewer 
+        src="textured_mesh.glb" 
+        ar 
+        ar-modes="webxr scene-viewer quick-look" 
+        camera-controls 
+        tone-mapping="neutral" 
+        poster="poster.webp" 
+        shadow-intensity="1">
+        
+        <div class="progress-bar hide" slot="progress-bar">
           <div class="update-bar"></div>
-      </div>
-      <button slot="ar-button" id="ar-button">
+        </div>
+
+        <button slot="ar-button" id="ar-button">
           View in your space
-      </button>
-      <div id="ar-prompt">
+        </button>
+
+        <div id="ar-prompt">
           <img src="ar_hand_prompt.png">
-      </div>
-    </model-viewer>  
-    <button style="
-      background: linear-gradient(90deg, #D21034, #FFFFFF, #000000);
-      color:#000;
-      padding:12px 28px;
-      border:none;
-      border-radius:8px;
-      font-size:16px;
-      font-family:sans-serif;
-      cursor:pointer;
-      font-weight:bold;
-    ">
-      Donate
-    </button>
-    <script src="script.js"></script>
-    <!-- Loads <model-viewer> for browsers: -->
-    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
-  </body>
+        </div>
+      </model-viewer>
+    </section>
+
+    <section class="info-section">
+      <h2>Why We Raise Our Voices</h2>
+      <p>
+        Sudan continues to face one of the world’s most devastating civil conflicts.
+        Millions of people have been displaced, families separated, and essential resources cut off.
+        Our movement focuses on raising international awareness, amplifying Sudanese voices,
+        and supporting grassroots humanitarian efforts.
+      </p>
+      <p>
+        The hibiscus flower represents beauty and resilience — a symbol of Sudan’s strength.
+        By engaging with this project, you help spread the story of a nation that deserves peace.
+      </p>
+    </section>
+
+    <div class="donate-container">
+      <button class="donate-button">Donate</button>
+    </div>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
 </html>
