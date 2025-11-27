@@ -1,114 +1,148 @@
 /* -----------------------------------------------------
-   GLOBAL RESET & TYPOGRAPHY
+   FIX for <model-viewer> not defined
 ----------------------------------------------------- */
-body {
+:not(:defined) > * {
+  display: none;
+}
+
+/* -----------------------------------------------------
+   PAGE BACKGROUND
+----------------------------------------------------- */
+html, body {
+  height: 100%;
   margin: 0;
-  font-family: 'Inter', sans-serif;
-  color: #f7f7f7;
-  background: linear-gradient(135deg, #007229aa, #D21034aa, #000000aa),
-              radial-gradient(circle at top, #ffffff11, #000000dd);
-  background-blend-mode: overlay;
-  min-height: 100vh;
-  backdrop-filter: blur(2px);
+  padding: 0;
 }
 
-/* Smooth fade and layout spacing */
-main {
-  padding: 40px 20px;
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-/* -----------------------------------------------------
-   HERO SECTION
------------------------------------------------------ */
-.hero {
-  text-align: center;
-  padding: 60px 20px 30px;
-}
-
-.hero h1 {
-  font-size: 3rem;
-  margin-bottom: 10px;
-  color: #ffffff;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  max-width: 700px;
-  margin: 0 auto;
-  font-size: 1.15rem;
-  color: #eaeaea;
-  line-height: 1.6;
-}
-
-/* -----------------------------------------------------
-   MODEL VIEWER SECTION
------------------------------------------------------ */
-.model-section model-viewer {
+body {
   width: 100%;
-  height: 450px;
-  margin-top: 30px;
-  border-radius: 14px;
-  overflow: hidden;
-
-  background: rgba(255,255,255,0.06);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255,255,255,0.08);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-}
-
-/* -----------------------------------------------------
-   INFO SECTION
------------------------------------------------------ */
-.info-section {
-  margin-top: 50px;
-  line-height: 1.8;
-  font-size: 1.1rem;
-}
-
-.info-section h2 {
-  font-size: 2rem;
-  margin-bottom: 15px;
-}
-
-/* -----------------------------------------------------
-   ELEGANT DONATE BUTTON
------------------------------------------------------ */
-.donate-container {
-  text-align: center;
-  margin-top: 60px;
-}
-
-.donate-button {
+  height: 100%;
   background: linear-gradient(
     135deg,
-    #D21034 0%,
-    #007229 50%,
+    #007229 0%,
+    #D21034 33%,
+    #FFFFFF 66%,
     #000000 100%
   );
-  padding: 14px 40px;
-  color: white;
-  border: none;
-  border-radius: 50px;
-  font-size: 1.2rem;
-  cursor: pointer;
-  font-weight: 600;
-
-  box-shadow: 0 8px 20px rgba(0,0,0,0.4),
-              0 0 15px rgba(210,16,52,0.5);
-  transition: 0.3s ease;
+  background-attachment: fixed;
+  background-size: cover;
+  overflow: hidden;
 }
 
-.donate-button:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.5),
-              0 0 20px rgba(0,255,100,0.6);
-  filter: brightness(1.1);
+/* -----------------------------------------------------
+   MODEL VIEWER
+----------------------------------------------------- */
+model-viewer {
+  width: 100%;
+  height: 90%;
+  background-color: transparent;
+  position: relative;
+  display: block;
 }
 
-.donate-button:active {
-  transform: translateY(-1px);
+/* -----------------------------------------------------
+   LOADING BAR
+----------------------------------------------------- */
+.progress-bar {
+  display: block;
+  width: 33%;
+  height: 10%;
+  max-height: 2%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  border-radius: 25px;
+  box-shadow:
+    0px 3px 10px 3px rgba(0, 0, 0, 0.5),
+    0px 0px 5px 1px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
-/* ----------------------------------------------------- */
+.progress-bar.hide {
+  visibility: hidden;
+  transition: visibility 0.3s;
+}
+
+.update-bar {
+  background-color: rgba(255, 255, 255, 0.9);
+  width: 0%;
+  height: 100%;
+  border-radius: 25px;
+  float: left;
+  transition: width 0.3s;
+}
+
+/* -----------------------------------------------------
+   AR BUTTON
+----------------------------------------------------- */
+#ar-button {
+  background-image: url("ar_icon.png");
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+  background-position: 12px 50%;
+  background-color: #fff;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  bottom: 16px;
+  padding: 0px 16px 0px 40px;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: 14px;
+  color: #4285f4;
+  height: 36px;
+  line-height: 36px;
+  border-radius: 18px;
+  border: 1px solid #DADCE0;
+  z-index: 10;
+}
+
+#ar-button:active {
+  background-color: #E8EAED;
+}
+
+#ar-button:focus {
+  outline: none;
+}
+
+#ar-button:focus-visible {
+  outline: 1px solid #4285f4;
+}
+
+/* -----------------------------------------------------
+   AR HAND PROMPT (FIXED)
+----------------------------------------------------- */
+@keyframes circle {
+  from { transform: translateX(-50%) rotate(0deg) translateX(50px) rotate(0deg); }
+  to   { transform: translateX(-50%) rotate(360deg) translateX(50px) rotate(-360deg); }
+}
+
+@keyframes elongate {
+  from { transform: translateX(100px); }
+  to   { transform: translateX(-100px); }
+}
+
+/* The prompt container */
+model-viewer > #ar-prompt {
+  position: absolute;
+  left: 50%;
+  bottom: 60px;
+  animation: elongate 2s infinite ease-in-out alternate;
+  display: none; /* hidden until AR starts */
+  z-index: 9;
+}
+
+/* When AR session starts, show */
+model-viewer[ar-status="session-started"] > #ar-prompt {
+  display: block;
+}
+
+/* rotating hand */
+model-viewer > #ar-prompt > img {
+  animation: circle 4s linear infinite;
+  width: 50px;
+  height: 50px;
+  opacity: 0.9;
+}
