@@ -1,13 +1,7 @@
-/* -----------------------------------------------------
-   FIX for <model-viewer> not defined
------------------------------------------------------ */
 :not(:defined) > * {
   display: none;
 }
 
-/* -----------------------------------------------------
-   PAGE BACKGROUND
------------------------------------------------------ */
 html, body {
   height: 100%;
   margin: 0;
@@ -21,28 +15,34 @@ body {
     135deg,
     #007229 0%,
     #D21034 33%,
-    #FFFFFF 66%,
+    #ffffff 66%,
     #000000 100%
   );
   background-attachment: fixed;
   background-size: cover;
-  overflow: hidden;
+  overflow-x: hidden;
+  font-family: Georgia, serif;
+  color: #111;
+  padding: 20px;
 }
 
-/* -----------------------------------------------------
-   MODEL VIEWER
------------------------------------------------------ */
+h1, h2 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+p {
+  line-height: 1.6;
+  font-size: 1.1rem;
+}
+
 model-viewer {
   width: 100%;
-  height: 90%;
-  background-color: transparent;
+  height: 350px;
   position: relative;
-  display: block;
+  margin: 30px 0;
 }
 
-/* -----------------------------------------------------
-   LOADING BAR
------------------------------------------------------ */
 .progress-bar {
   display: block;
   width: 33%;
@@ -74,9 +74,6 @@ model-viewer {
   transition: width 0.3s;
 }
 
-/* -----------------------------------------------------
-   AR BUTTON
------------------------------------------------------ */
 #ar-button {
   background-image: url("ar_icon.png");
   background-repeat: no-repeat;
@@ -89,31 +86,40 @@ model-viewer {
   white-space: nowrap;
   bottom: 16px;
   padding: 0px 16px 0px 40px;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: Roboto, sans-serif;
   font-size: 14px;
   color: #4285f4;
   height: 36px;
   line-height: 36px;
   border-radius: 18px;
-  border: 1px solid #DADCE0;
+  border: 1px solid #dadce0;
   z-index: 10;
 }
 
 #ar-button:active {
-  background-color: #E8EAED;
+  background-color: #e8eaed;
 }
 
-#ar-button:focus {
-  outline: none;
+#ar-prompt {
+  position: absolute;
+  left: 50%;
+  bottom: 60px;
+  animation: elongate 2s infinite ease-in-out alternate;
+  display: none;
+  z-index: 9;
 }
 
-#ar-button:focus-visible {
-  outline: 1px solid #4285f4;
+model-viewer[ar-status="session-started"] > #ar-prompt {
+  display: block;
 }
 
-/* -----------------------------------------------------
-   AR HAND PROMPT (FIXED)
------------------------------------------------------ */
+#ar-prompt img {
+  animation: circle 4s linear infinite;
+  width: 50px;
+  height: 50px;
+  opacity: 0.9;
+}
+
 @keyframes circle {
   from { transform: translateX(-50%) rotate(0deg) translateX(50px) rotate(0deg); }
   to   { transform: translateX(-50%) rotate(360deg) translateX(50px) rotate(-360deg); }
@@ -124,25 +130,18 @@ model-viewer {
   to   { transform: translateX(-100px); }
 }
 
-/* The prompt container */
-model-viewer > #ar-prompt {
-  position: absolute;
-  left: 50%;
-  bottom: 60px;
-  animation: elongate 2s infinite ease-in-out alternate;
-  display: none; /* hidden until AR starts */
-  z-index: 9;
+.donate-container {
+  text-align: left;
+  margin-top: 20px;
 }
 
-/* When AR session starts, show */
-model-viewer[ar-status="session-started"] > #ar-prompt {
-  display: block;
-}
-
-/* rotating hand */
-model-viewer > #ar-prompt > img {
-  animation: circle 4s linear infinite;
-  width: 50px;
-  height: 50px;
-  opacity: 0.9;
+button.donate-button {
+  padding: 10px 22px;
+  font-size: 1rem;
+  border-radius: 20px;
+  border: none;
+  background: linear-gradient(90deg, #D21034, #007229);
+  color: white;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
