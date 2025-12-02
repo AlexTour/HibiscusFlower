@@ -1,11 +1,16 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <title>Hibiscus for Sudan – Awareness Movement</title>
+  <title>Hibiscus for Sudan</title>
   <meta charset="utf-8">
   <meta name="description" content="Hibiscus for Sudan – Awareness for the Civil War">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;800&family=Inter:wght@300;400;600&family=Roboto+Mono:wght@400&display=swap" rel="stylesheet">
+
   <link type="text/css" href="./styles.css" rel="stylesheet"/>
+
   <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
 </head>
 
@@ -13,47 +18,34 @@
   <header class="hero">
     <h1>Hibiscus for Sudan</h1>
     <p class="subtitle">
-      Honoring the Hibiscus <i>(Hibiscus rosa-sinensis)</i>, a symbol of resilience in Sudan.  
-      Join the movement to support civilians affected by the ongoing conflict.
+      Honoring the Hibiscus  
+      <span class="latin-name">(Hibiscus rosa-sinensis)</span>
     </p>
   </header>
 
   <main>
+
     <section class="model-section">
       <model-viewer 
-        src="textured_mesh.glb" 
-        ar 
-        ar-modes="webxr scene-viewer quick-look" 
-        camera-controls 
-        tone-mapping="neutral" 
-        poster="poster.webp" 
-        shadow-intensity="1">
+        src="textured_mesh.glb"
+        ar
+        ar-modes="webxr scene-viewer quick-look"
+        camera-controls
+        tone-mapping="neutral"
+        poster="poster.webp"
+        shadow-intensity="1"
+        class="viewer">
         
-        <div class="progress-bar hide" slot="progress-bar">
-          <div class="update-bar"></div>
-        </div>
-
         <button slot="ar-button" id="ar-button">
-          View in your space
+          View in AR
         </button>
-
-        <div id="ar-prompt">
-          <img src="ar_hand_prompt.png">
-        </div>
       </model-viewer>
     </section>
 
     <section class="info-section">
-      <h2>Why We Raise Our Voices</h2>
+      <h2>Stand With Sudan</h2>
       <p>
-        Sudan continues to face one of the world’s most devastating civil conflicts.
-        Millions of people have been displaced, families separated, and essential resources cut off.
-        Our movement focuses on raising international awareness, amplifying Sudanese voices,
-        and supporting grassroots humanitarian efforts.
-      </p>
-      <p>
-        The hibiscus flower represents beauty and resilience — a symbol of Sudan’s strength.
-        By engaging with this project, you help spread the story of a nation that deserves peace.
+        A simple gesture of awareness for the civilians living through the ongoing conflict.
       </p>
     </section>
 
