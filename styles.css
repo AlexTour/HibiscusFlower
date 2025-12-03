@@ -61,9 +61,6 @@ model-viewer.viewer {
   left: 50%;
   transform: translateX(-50%);
   padding: 12px 24px;
-  background: #0b7a3b;
-  color: white;
-  border: none;
   border-radius: 6px;
   font-family: 'Inter', sans-serif;
   font-size: 0.9rem;
