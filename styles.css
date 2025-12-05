@@ -108,7 +108,7 @@ model-viewer.viewer {
   footer.credits {
     width: 100%;
     text-align: center;
-    padding: 24px 12px;
+    padding: 0px 12px;
     font-family: "Inter", sans-serif;
     font-size: 0.9rem;
     backdrop-filter: blur(8px);
