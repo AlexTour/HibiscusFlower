@@ -103,3 +103,21 @@ model-viewer.viewer {
   background: #222;
   transform: scale(1.04);
 }
+
+  footer.credits {
+    width: 100%;
+    text-align: center;
+    padding: 24px 12px;
+    margin-top: 60px;
+    font-family: "Inter", sans-serif;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.85);
+    backdrop-filter: blur(8px);
+    background: rgba(0,0,0,0.3);
+    border-top: 1px solid rgba(255,255,255,0.15);
+  }
+
+  footer.credits p {
+    margin: 0;
+    line-height: 1.6;
+  }
