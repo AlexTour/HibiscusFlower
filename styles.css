@@ -62,6 +62,7 @@ model-viewer.viewer {
   cursor: pointer;
   border: 2px solid black;
   transition: opacity .3s;
+  color: darkred;
 }
 #ar-button:hover {
   opacity: 0.8;
