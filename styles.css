@@ -119,4 +119,5 @@ model-viewer.viewer {
   footer.credits p {
     margin: 0;
     line-height: 1.6;
+    font-size: smaller;
   }
